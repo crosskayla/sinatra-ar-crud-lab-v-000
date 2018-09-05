@@ -17,11 +17,6 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  get '/posts/:id' do
-    @post = Post.find(params[:id])
-    erb :show
-  end
-
   post '/posts' do
     @post = Post.create(params)
     redirect '/posts'
@@ -29,6 +24,11 @@ class ApplicationController < Sinatra::Base
 
   get '/posts/new' do
     erb :new
+  end
+
+  get '/posts/:id' do
+    @post = Post.find(params[:id])
+    erb :show
   end
 
 end
